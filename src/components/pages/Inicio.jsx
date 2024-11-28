@@ -37,13 +37,15 @@ const UsersManager = () => {
   // Eliminar usuario
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://redesproyec.myvnc.com/users/${id}`);
+      const response = await axios.delete(`https://redesproyec.myvnc.com/users/${id}`);
+      console.log("Respuesta del servidor:", response);  // Ver respuesta completa
       alert("Usuario eliminado con éxito");
       fetchUsers();
     } catch (error) {
-      console.error("Error al eliminar el usuario", error);
+      console.error("Error al eliminar el usuario", error.response || error.message);
     }
   };
+  
 
   // Manejar cambios en el formulario
   const handleInputChange = (e) => {
